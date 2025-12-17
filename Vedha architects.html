@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedha Architect | Premium Villa Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES --- */
+        :root {
+            --primary-dark: #0f1115;
+            --secondary-dark: #1a1d23;
+            /* Premium Gold Gradient */
+            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 50%, #fbf5b7 100%);
+            --gold-flat: #c5a059;
+            --text-grey: #888;
+            --bg-light: #fdfdfd;
+            --white: #ffffff;
+            --shadow-premium: 0 20px 40px -10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 30px 60px -15px rgba(0,0,0,0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--primary-dark);
+            line-height: 1.8;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #444;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 2.5rem;
+            color: #444;
+            font-weight: 400;
+        }
+
+        /* Custom Gold Bullet */
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--gold-flat);
+            transform: rotate(45deg);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* --- GRAPHICAL ELEMENTS --- */
+        .blueprint-bg {
+            background-color: #1a1d23;
+            background-image: 
+                linear-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: white;
+            position: relative;
+        }
+        
+        .blueprint-bg h2, .blueprint-bg h3, .blueprint-bg p, .blueprint-bg span {
+            color: white;
+        }
+        
+        .blueprint-bg .section-subtitle {
+            color: var(--gold-flat);
+        }
+
+        .divider-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--gold-flat), transparent);
+            margin: 0 auto 40px;
+            display: block;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background: var(--primary-dark);
+            color: var(--gold-flat);
+            padding: 22px 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid var(--gold-flat);
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gold-flat);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--white);
+            border-color: var(--gold-flat);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            transition: padding 0.3s;
+        }
+        
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            text-align: left;
+            line-height: 1;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: block;
+        }
+        
+        .logo-subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-flat);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: #0f1115;
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* BACKGROUND IMG FIX */
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Removed low opacity, letting the image shine through */
+            opacity: 1; 
+            transform: scale(1.05);
+            animation: slowZoom 25s infinite alternate;
+            z-index: 0;
+            background-color: #222; /* Fallback color */
+        }
+
+        /* NEW OVERLAY to make text readable but keep image rich */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 17, 21, 0.3), rgba(15, 17, 21, 0.7));
+            z-index: 1;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.15); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 50px;
+            /* Increased backdrop transparency slightly since the image is better now */
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--white);
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero h1 span {
+            font-style: italic;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.subhead {
+            font-size: 1.4rem;
+            color: #ffffff;
+            max-width: 750px;
+            margin: 0 auto 3.5rem auto;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .qualification-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.6);
+            padding: 30px;
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--gold-flat);
+        }
+
+        .qualification-box strong {
+            color: var(--gold-flat);
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        .qualification-box p {
+             color: #ffffff;
+             margin: 0;
+             font-size: 1rem;
+             font-weight: 500;
+        }
+
+        /* --- SECTIONS --- */
+        .bg-pattern {
+            background-color: #fafafa;
+            background-image: linear-gradient(#e8e8e8 1px, transparent 1px), linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center top;
+        }
+        
+        .text-center { text-align: center; }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .section-subtitle {
+            color: var(--gold-flat);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* --- CARDS & GRID --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-premium);
+            border-bottom-color: var(--gold-flat);
+        }
+        
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.05);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* --- PORTFOLIO --- */
+        .project-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+            background-color: #333; /* Fallback color */
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5), transparent);
+            color: white;
+            opacity: 1;
+            transition: all 0.4s;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            color: var(--gold-flat);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial-card {
+            background: #fff;
+            padding: 50px 40px;
+            border: 1px solid #eee;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .quote-icon {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(197, 160, 89, 0.15);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .client-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: var(--primary-dark);
+        }
+
+        .client-info span {
+            font-size: 0.8rem;
+            color: var(--gold-flat);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- VIDEO TESTIMONIALS --- */
+        .video-wrapper {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            aspect-ratio: 16/9;
+            background: #111; /* Fallback color */
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: block;
+            opacity: 0.8;
+        }
+
+        .video-wrapper:hover .video-thumb {
+            transform: scale(1.08);
+            opacity: 0.6;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Pulse Animation */
+        .play-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.5);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .video-wrapper:hover .play-btn {
+            background: var(--gold-flat);
+            border-color: var(--gold-flat);
+            transform: scale(1.1);
+        }
+        
+        .video-wrapper:hover .play-btn::after {
+            animation: none;
+            border: none;
+        }
+
+        .play-icon {
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 16px solid white;
+            margin-left: 5px;
+        }
+
+        .video-caption {
+            margin-top: 15px;
+        }
+        
+        .video-caption h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .video-caption p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--text-grey);
+        }
+
+        /* --- DISQUALIFICATION --- */
+        .disqualification {
+            background: #fff;
+            padding: 80px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-premium);
+        }
+        
+        .disqualification::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--gold-flat);
+        }
+
+        /* --- FORM --- */
+        .form-section {
+            background: #0f1115; /* Dark background for form for premium feel */
+            color: white;
+            padding: 140px 0;
+        }
+        
+        .form-section h2 { color: white; }
+        .form-section p { color: rgba(255,255,255,0.6); }
+
+        .form-wrapper {
+            background-color: transparent;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: var(--gold-flat);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 20px 0;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-bottom-color: var(--gold-flat);
+        }
+        
+        /* Select styling hack */
+        select option {
+            background: #1a1d23;
+            color: #fff;
+        }
+
+        .rejection-msg {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #e74c3c;
+            display: none;
+        }
+
+        /* --- SOCIAL PROOF --- */
+        .tag-container {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            margin-top: 50px;
+        }
+        
+        .proof-tag {
+            background: #fff;
+            padding: 18px 35px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        
+        .proof-tag:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold-flat);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #08090b;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        footer h2 {
+            color: var(--white);
+            letter-spacing: 5px;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3rem; }
+            .hero-content { padding: 30px; margin: 0 15px; }
+            .grid-3 { grid-template-columns: 1fr; gap: 20px; }
+            .disqualification { padding: 40px; }
+            section { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo-container">
+                <!-- Custom SVG Logo -->
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 85L20 20H30L50 65L70 20H80L50 85Z" fill="url(#goldGradient)"/>
+                    <path d="M15 20H5V25H15V20Z" fill="#1a1a1a"/>
+                    <path d="M95 20H85V25H95V20Z" fill="#1a1a1a"/>
+                    <defs>
+                        <linearGradient id="goldGradient" x1="20" y1="20" x2="80" y2="85" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#bf953f"/>
+                            <stop offset="45%" stop-color="#fcf6ba"/>
+                            <stop offset="100%" stop-color="#b38728"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">Vedha</span>
+                    <span class="logo-subtitle">Architect</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+        <!-- New Hero Image: Richer, Warmer Twilight Shot -->
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2000&auto=format&fit=crop" 
+             alt="Luxury Architect Villa at Twilight" 
+             class="hero-bg-img"
+             onerror="this.src='https://placehold.co/1920x1080/1a1a1a/c5a059?text=Modern+Villa+Architecture'">
+        
+        <!-- Added Gradient Overlay Div -->
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content reveal active">
+            <h1>We Do Not Start With <span>Design</span>.</h1>
+            <p class="subhead">We start by diagnosing whether your land, lifestyle, and budget can realistically become a premium villa.</p>
+            
+            <div class="qualification-box">
+                <p><strong>⚠️ Critical Requirement</strong></p>
+                <p>Only for landowners with <strong>2500+ sq ft</strong> or more, planning a premium architect-designed villa.</p>
+            </div>
+
+            <a href="#apply" class="btn">Check If You’re the Right Fit</a>
+        </div>
+    </section>
+
+    <!-- 2. PROBLEM AGITATION -->
+    <section class="reveal">
+        <div class="container">
+            <div class="text-center">
+                <div class="divider-line"></div>
+                <span class="section-subtitle">The Confusion</span>
+                <h2 class="section-title">If you’re stuck here,<br>this page is for you.</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 60px auto;">
+                <ul>
+                    <li>“I know I want a premium villa… but I can’t clearly explain what I want.”</li>
+                    <li>“Every architect shows me their style — not my lifestyle.”</li>
+                    <li>“I’m afraid once construction starts, mistakes are irreversible.”</li>
+                    <li>“I don’t want my home to look expensive but feel average.”</li>
+                    <li>“Too many opinions are diluting my original vision.”</li>
+                </ul>
+                <p class="text-center" style="margin-top: 60px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: var(--primary-dark);">
+                    “This confusion is normal — when the investment is big and the decision is permanent.”
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HARD DISQUALIFICATION -->
+    <section class="bg-pattern reveal">
+        <div class="container">
+            <div class="disqualification">
+                <span class="section-subtitle">The Filter</span>
+                <h2 class="section-title">Please Don’t Apply If…</h2>
+                <p>We guard our time and your design integrity rigorously.</p>
+                <ul style="margin-top: 40px;">
+                    <li>Your plot is below 2500 sq ft</li>
+                    <li>You’re looking for ready-made / copied floor plans</li>
+                    <li>Your priority is lowest cost over design clarity</li>
+                    <li>You want to start construction without locking the design</li>
+                    <li>You’re not emotionally invested in creating a long-term home</li>
+                </ul>
+                <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-weight: 500; color: var(--primary-dark);">We work with a limited number of clients who want clarity, confidence, and control before spending crores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. UNIQUE MECHANISM -->
+    <section class="reveal">
+        <div class="container">
+            <div class="text-center">
+                <div class="divider-line"></div>
+                <span class="section-subtitle">Our Process</span>
+                <h2 class="section-title">We Don’t Start With Drawings.<br>We Start With You.</h2>
+                <p>This is not decoration. This is decision architecture.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h3>Vision Extraction</h3>
+                    <p>We translate your lifestyle, routines, future plans, and emotional preferences into clear design direction — even if you can’t articulate them.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h3>Design Alignment</h3>
+                    <p>Every space is planned to support how you live today and how your life will evolve. We ensure flow, function, and future-proofing.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h3>Decision Locking</h3>
+                    <p>You get a detailed architect plan that eliminates doubt before construction begins. No changes, no regrets, just execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PORTFOLIO SECTION -->
+    <section id="portfolio" class="blueprint-bg reveal">
+        <div class="container">
+            <div class="text-center">
+                <div class="divider-line" style="background: linear-gradient(to bottom, white, transparent);"></div>
+                <span class="section-subtitle">Selected Works</span>
+                <h2 class="section-title">Built on Clarity</h2>
+                <p style="max-width: 600px; margin: 0 auto;">A glimpse into how we translate client vision into architectural reality.</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" 
+                         alt="Villa Project 1" 
+                         class="project-img"
+                         onerror="this.src='https://placehold.co/600x800/222/c5a059?text=The+Courtyard+Residence'">
+                    <div class="project-overlay">
+                        <div class="project-content">
+                            <h3 class="project-title">The Courtyard Residence</h3>
+                            <div class="project-meta">3200 Sq Ft • Contemporary</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800" 
+                         alt="Villa Project 2" 
+                         class="project-img"
+                         onerror="this.src='https://placehold.co/600x800/222/c5a059?text=Skylight+Manor'">
+                    <div class="project-overlay">
+                        <div class="project-content">
+                            <h3 class="project-title">Skylight Manor</h3>
+                            <div class="project-meta">5500 Sq Ft • Modern Luxury</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <!-- Updated Image: More substantial architecture structure -->
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" 
+                         alt="Villa Project 3" 
+                         class="project-img"
+                         onerror="this.src='https://placehold.co/600x800/222/c5a059?text=Twin+Gable+House'">
+                    <div class="project-overlay">
+                        <div class="project-content">
+                            <h3 class="project-title">The Twin Gable House</h3>
+                            <div class="project-meta">4100 Sq Ft • Tropical Modern</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SOCIAL PROOF & TESTIMONIALS -->
+    <section class="bg-pattern reveal">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Clientele</span>
+                <h2 class="section-title">Who Typically Works With Us</h2>
+                <div class="tag-container" style="margin-bottom: 60px;">
+                    <div class="proof-tag">Business Owners</div>
+                    <div class="proof-tag">Professionals building forever homes</div>
+                    <div class="proof-tag">Families planning a legacy villa</div>
+                    <div class="proof-tag">Clients who value thinking before building</div>
+                </div>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid-3">
+                <div class="testimonial-card">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"We almost built a standard box. Vedha challenged us to think about how we actually live. The result is a home that feels like us, not a showroom."</p>
+                    <div class="client-info">
+                        <h4>Rajesh K.</h4>
+                        <span>Industrialist, Coimbatore</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"The clarity session saved us at least 15 lakhs in construction changes. We locked every decision before digging the earth."</p>
+                    <div class="client-info">
+                        <h4>Sarah & David</h4>
+                        <span>IT Professionals, Chennai</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"I spoke to 5 architects. Vedha was the only one who asked 'Why' before asking 'How much'. That made all the difference."</p>
+                    <div class="client-info">
+                        <h4>Dr. Menon</h4>
+                        <span>Surgeon, Kerala</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5 VIDEO TESTIMONIALS -->
+    <section class="reveal">
+        <div class="container">
+            <div class="text-center">
+                <div class="divider-line"></div>
+                <span class="section-subtitle">Visual Stories</span>
+                <h2 class="section-title">See The Transformation</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Real clients sharing their journey from confusion to clarity.</p>
+            </div>
+            
+            <div class="grid-3" style="margin-top: 50px;">
+                <!-- Video 1 -->
+                <div>
+                    <div class="video-wrapper">
+                        <!-- High Quality Architectural Thumbnail -->
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800" 
+                             alt="Client Video 1" 
+                             class="video-thumb"
+                             onerror="this.src='https://placehold.co/600x400/222/c5a059?text=Video+Thumbnail'">
+                        <div class="play-overlay">
+                            <div class="play-btn">
+                                <div class="play-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h4>"It feels like a resort."</h4>
+                        <p>The Reddy Family, Hyderabad</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div>
+                    <div class="video-wrapper">
+                        <!-- High Quality Architectural Thumbnail -->
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" 
+                             alt="Client Video 2" 
+                             class="video-thumb"
+                             onerror="this.src='https://placehold.co/600x400/222/c5a059?text=Video+Thumbnail'">
+                        <div class="play-overlay">
+                            <div class="play-btn">
+                                <div class="play-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h4>"No construction delays."</h4>
+                        <p>Mr. & Mrs. Kapoor, Bangalore</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div>
+                    <div class="video-wrapper">
+                        <!-- High Quality Architectural Thumbnail -->
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" 
+                             alt="Client Video 3" 
+                             class="video-thumb"
+                             onerror="this.src='https://placehold.co/600x400/222/c5a059?text=Video+Thumbnail'">
+                        <div class="play-overlay">
+                            <div class="play-btn">
+                                <div class="play-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h4>"Our forever home."</h4>
+                        <p>Anand & Priya, Coimbatore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. THE OFFER -->
+    <section class="reveal">
+        <div class="container text-center">
+            <div class="divider-line"></div>
+            <h2 class="section-title" style="color: var(--primary-dark);">Start With a Paid Clarity Consultation</h2>
+            <p><strong>This is a filter, not a sales pitch.</strong></p>
+            <div style="text-align: left; max-width: 750px; margin: 50px auto 0; border: 1px solid #eee; padding: 60px; background: #fff; box-shadow: var(--shadow-premium);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px;">
+                    <h4 style="text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">What You Get</h4>
+                </div>
+                
+                <ul style="margin-top: 20px;">
+                    <li>Deep lifestyle & vision discussion</li>
+                    <li>Professional guidance on layout, flow, and priorities</li>
+                    <li>Early red-flag identification</li>
+                    <li>Clear next steps — with or without us</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FORM -->
+    <section id="apply" class="form-section reveal">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="section-subtitle">Application</span>
+                <h2 class="section-title" style="color: white;">Apply for Design Clarity Session</h2>
+                <p>Application required. We accept limited clients each month.</p>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <!-- FILTER QUESTION 1 -->
+                    <div class="form-group">
+                        <label>What is your plot size?</label>
+                        <select id="plotSize" required>
+                            <option value="">-- Select Size --</option>
+                            <option value="reject">Less than 1500 sq ft</option>
+                            <option value="reject">1500 - 2400 sq ft</option>
+                            <option value="accept">2500 - 4000 sq ft</option>
+                            <option value="accept">4000+ sq ft</option>
+                        </select>
+                    </div>
+
+                    <!-- FILTER QUESTION 2 -->
+                    <div class="form-group">
+                        <label>Are you planning a premium architect-designed villa?</label>
+                        <select id="premiumCheck" required>
+                            <option value="">-- Select --</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>When do you plan to start construction?</label>
+                        <input type="text" placeholder="e.g. Next 3 months">
+                    </div>
+
+                    <div class="form-group">
+                        <label>What’s your biggest fear about your villa design?</label>
+                        <textarea placeholder="Be honest..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Are you willing to invest in design clarity before construction?</label>
+                        <select required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; border-color: rgba(255,255,255,0.2); color: white;">Submit Application</button>
+                    
+                    <div id="rejectionMsg" class="rejection-msg">
+                        Based on your inputs, it seems our services aren't the right fit for your project requirements right now. We specialize strictly in 2500+ sq ft premium villas. We recommend looking for builders who offer ready-made plans.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="logo-container">
+                <!-- Footer Logo -->
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;">
+                    <path d="M50 85L20 20H30L50 65L70 20H80L50 85Z" fill="#ffffff"/>
+                    <path d="M15 20H5V25H15V20Z" fill="#555"/>
+                    <path d="M95 20H85V25H95V20Z" fill="#555"/>
+                </svg>
+                <div class="logo-text" style="color: white;">
+                    <span class="logo-title" style="color: white; font-size: 1.6rem;">Vedha</span>
+                    <span class="logo-subtitle" style="color: #888;">Architect</span>
+                </div>
+            </div>
+            
+            <p style="color: #666; font-style: italic; margin-top: 20px;">“A villa is built once. Clarity should come first.”</p>
+            <p style="font-size: 0.75rem; margin-top: 60px; color: #444; letter-spacing: 1px; text-transform: uppercase;">&copy; 2025 Vedha Architect. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form Handling Logic
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const plotSize = document.getElementById('plotSize').value;
+            const premiumCheck = document.getElementById('premiumCheck').value;
+            const rejectionMsg = document.getElementById('rejectionMsg');
+
+            if (plotSize === 'reject' || premiumCheck === 'no') {
+                rejectionMsg.style.display = 'block';
+                rejectionMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                rejectionMsg.style.display = 'none';
+                alert("Success! Your application fits our criteria. We will contact you shortly.");
+            }
+        }
+
+        // Scroll Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        window.onload = reveal;
+    </script>
+</body>
+</html>
